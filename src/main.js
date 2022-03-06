@@ -1,4 +1,22 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import { createWebHistory, createRouter } from "vue-router";
+import MainPage from "./pages/MainPage";
+import LeaderBoard from "./pages/LeaderBoard";
+import App from "./App.vue";
 
-createApp(App).mount('#app')
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: MainPage,
+  },
+  {
+    path: "/leader-board",
+    name: "LeaderBoard",
+    component: LeaderBoard,
+  },
+];
+const router = createRouter({ history: createWebHistory(), routes });
+createApp(App)
+  .use(router)
+  .mount("#app");
