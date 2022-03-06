@@ -1,5 +1,5 @@
 <template>
-  <div class="col-sm-3 my-2">
+  <div class="col-sm-3 my-2 mx-2">
     <div class="card" presentation="role" v-on:click="cardClick(id)">
       <img
         v-bind:class="visible ? 'visibilityShow' : 'visibility'"
@@ -32,7 +32,7 @@ export default {
   background-color: #f1f1f1;
   text-align: center;
   width: 100px;
-  padding: 10px;
+  padding: 5px;
 }
 
 .visibility {
@@ -45,7 +45,6 @@ export default {
   .card img {
     height: 100px;
     width: 100px !important;
-    margin-top: 5px;
   }
   .card {
     height: 110px;

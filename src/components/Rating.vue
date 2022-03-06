@@ -1,6 +1,6 @@
 <template>
   <div class="w-50  h5">
-    Rating:
+    <span v-if="!show"> Rating:</span>
     <span
       v-for="index in rating"
       :key="index"
@@ -15,6 +15,7 @@ export default {
   props: {
     rating: Number,
     deduceRating: Number,
+    show: Boolean,
   },
 };
 </script>

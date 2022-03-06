@@ -10,8 +10,8 @@
       <Rating :rating="rating" :deduceRating="deduceRating" />
       <button class="btn btn-dark mx-3 mt-3" @click="restart">restart</button>
     </div>
-    <div class="board container py-1">
-      <div class=" cardBoard">
+    <div class="board container  py-1">
+      <div class="cardBoard">
         <SingleCard
           v-for="(item, index) in imgId.slice(0, 4)"
           :key="index"
@@ -107,10 +107,11 @@ export default {
       this.visibilty[id] = true;
       let newId = id;
       const score = this.clickState / 20;
-      if (score > 2) {
+      if (score > 1) {
         // todo this logic
-        this.rating = 5 - score;
-        this.deduceRating = parseInt(score) - 1;
+
+        this.rating = 5 - parseInt(score);
+        this.deduceRating = parseInt(score);
       }
       if (newId > 8) {
         newId = newId - 8;
@@ -138,7 +139,7 @@ export default {
     },
     onSubmit(event) {
       const username = event.target[0].value;
-      const score = this.rating - 1;
+      const score = this.rating;
       fetch("https://memory-game-rest-backend.herokuapp.com/add-score", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -168,10 +169,14 @@ export default {
 
   align-items: center;
   display: flex;
+
   flex-wrap: nowrap;
 }
 .board {
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 @media screen and (min-width: 908px) {
   .board {
